@@ -1,0 +1,283 @@
+                                                           Testcase11
+=====================================================================================================================
+package testNG;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class TestCase11 {
+	
+	WebDriver driver; 
+	
+	
+	@Test(parameters = {"un", "pws"})
+	public void nop_Login(String a, String b) throws Exception {
+		
+		WebDriverManager.chromedriver().setup();
+		
+		driver = new ChromeDriver();
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+		driver.manage().window().maximize();
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+
+		driver.get("https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F");
+		
+		Reporter.log("chromedriver SetUp is done");
+		
+		driver.findElement(By.id("Email")).clear();
+		driver.findElement(By.id("Email")).sendKeys(a);
+		driver.findElement(By.id("Password")).clear();
+		driver.findElement(By.id("Password")).sendKeys(b);
+		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		Thread.sleep(5000);
+		driver.quit();
+	}
+	
+	
+}
+-----------------------------------------------------------------------------------------------------------------------------------
+                                                   ParamerterSuite.xml
+================================================================================================================================
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+
+<suite name="ParameterSuite">
+
+	<test thread-count="5" name="ParameterTest">
+	
+		<parameter name="un" value="admin@yourstore.com" />
+		<parameter name="pws" value="admin" />
+		
+		<classes>
+			<class name="testNG.TestCase11" />
+		</classes>
+	</test>
+</suite> 
+
+
+--------------------------------------------------------------------------------------------------------------------------
+                                                    Testcase12
+===========================================================================================================================
+package testNG;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class TestCase12 {
+	
+	WebDriver driver;
+
+	@Test(dataProvider = "dataproviderMethod1", dataProviderClass = TestCase13.class)
+	public void testMethod1(String un, String pws) throws Exception {
+
+		System.out.println(un + "		" + pws);
+
+		WebDriverManager.chromedriver().setup();
+
+		driver = new ChromeDriver();
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+		driver.manage().window().maximize();
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+
+		driver.get("https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F");
+
+		Reporter.log("chromedriver SetUp is done");
+
+		driver.findElement(By.id("Email")).clear();
+		driver.findElement(By.id("Email")).sendKeys(un);
+		driver.findElement(By.id("Password")).clear();
+		driver.findElement(By.id("Password")).sendKeys(pws);
+		driver.findElement(By.xpath("//button[@type='submit']")).click();
+		Thread.sleep(5000);
+		driver.quit();
+
+	}
+
+
+
+	
+
+}
+-------------------------------------------------------------------------------------------------------------------------------
+                                                             Testcase13
+========================================================================================================================================
+package testNG;
+
+import org.testng.annotations.DataProvider;
+
+public class TestCase13 {
+
+	@DataProvider(name = "dataproviderMethod1")
+	public Object[][] dataProvider() {
+
+		Object[][] data = new Object[4][2];
+
+		data[0][0] = "admin@yourstore.com";
+		data[0][1] = "admin";
+
+		data[1][0] = "shareef@store.com";
+		data[1][1] = "shareef";
+
+		data[2][0] = "datta@store.com";
+		data[2][1] = "datta";
+
+		data[3][0] = "anil@store.com";
+		data[3][1] = "anil";
+
+		return data;
+
+	}
+
+}
+-----------------------------------------------------------------------------------------------------------------------------------
+                                                        Testcase14
+=====================================================================================================================================
+package testNG;
+
+import org.testng.Assert;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+
+@Listeners(testNG.TestNGListenerExample.class)
+public class TestCase14 {
+
+//	@Test
+//	public void testMethod1() {
+//		System.out.println("Hello");
+//	}
+//	
+//	@Test
+//	public void testMethod4() {
+//		Assert.fail();
+//	}
+
+	@Test(retryAnalyzer = testNG.RetryAnalyzerExample.class)
+	public void testMethod2() {
+		Assert.fail();
+		System.out.println("Darling");
+	}
+
+//	@Test(dependsOnMethods = "testMethod2")
+//	public void testMethod3() {
+//		System.out.println("Can we go out");
+//	}
+
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------
+                                                             TestNGListenerExample
+====================================================================================================================================
+package testNG;
+
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+
+public class TestNGListenerExample implements ITestListener {
+
+	public void onTestStart(ITestResult result) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("TestMethod started " + result.getName());
+		
+	}
+
+	public void onTestSuccess(ITestResult result) {
+		// TODO Auto-generated method stub
+		System.out.println("Test Method Success "+result.getName());
+	}
+
+	public void onTestFailure(ITestResult result) {
+		// TODO Auto-generated method stub
+		System.out.println("Test Method Failed "+result.getName());
+	}
+
+	public void onTestSkipped(ITestResult result) {
+		// TODO Auto-generated method stub
+		System.out.println("Test Method Skipped "+ result.getName());
+		
+	}
+
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void onStart(ITestContext context) {
+		// TODO Auto-generated method stub
+		System.out.println("Test Execution started "+ context.getName());
+	}
+
+	public void onFinish(ITestContext context) {
+		// TODO Auto-generated method stub
+		System.out.println("Test Execution Finished "+ context.getName());
+	}
+	
+	
+	
+	
+	
+	
+	
+}
+----------------------------------------------------------------------------------------------------------------------------------------
+                                                            RetryAnalyzerExample
+====================================================================================================================================
+package testNG;
+
+import org.testng.IRetryAnalyzer;
+import org.testng.ITestResult;
+
+public class RetryAnalyzerExample implements IRetryAnalyzer {
+
+	
+	int startExecutionCount = 1;
+	int maxExecutionCount = 3;
+
+	public boolean retry(ITestResult result) {
+
+		if(startExecutionCount < maxExecutionCount) {
+			startExecutionCount++;
+			return true;
+		}
+	
+		return false;
+	}
+	
+	
+	
+	
+}
+--------------------------------------------------------------------------------------------------------------------------------------  
+
+
+
+
+
+
+
+

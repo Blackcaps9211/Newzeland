@@ -1,0 +1,162 @@
+                                                  INHERITANCE
+===============================================================================================================================
+                                              single-inheritance
+---------------------------------------------------------------------------------------------------
+class Example1{
+	
+	int a = 10;
+	public void method1(){
+		System.out.println("Method1");
+	}
+	
+}
+
+class Example2 extends Example1{
+	
+	public static void main(String[] args){
+		
+		Example2 ex2 = new Example2();
+		ex2.method1();
+		System.out.println(ex2.a);
+		
+	}
+	
+}
+==============================================================================================================================
+                                               multiple inheritance
+----------------------------------------------------------------------------------------------------------------------------
+class Example3{
+	
+	int a = 10;
+	public void method1(){
+		System.out.println("This is Example3 class Method1");
+	}
+	
+}
+
+class Example4{
+	
+	public void method1(){
+		System.out.println("This is Example4 class Method1");
+	}
+	
+}
+
+class Example5 extends Example3, Example4{
+	
+	Example5 ex5 = new Example5();
+	
+	public static void main(String[] args){
+		ex5.method1();
+	}
+	
+}
+=========================================================================================================================
+                                                             Multi-level inheritance
+=---------------------------------------------------------------------------------------------------------------------------------
+
+class Example6{
+	
+	int a = 10;
+	public void method1(){
+		System.out.println("old mtehod1");
+	}
+	
+}
+
+class Example7 extends Example6{
+	
+	public void method2(){
+		System.out.println("This is Example7 class Method2");
+	}
+	
+}
+
+class Example8 extends Example7{
+	
+	public void method3(){
+		System.out.println("This is Example8 class Method3");
+	}
+	
+	
+}
+
+class Example9 extends Example8{
+
+	public void method1(){
+		System.out.println("old mtehod1 updated");
+	}
+	
+	public static void main(String[] args){
+		
+		Example9 ex9 = new Example9();
+		ex9.method1();
+		ex9.method2();
+		ex9.method3();
+		
+	}
+
+}
+===========================================================================================================================
+                                              inheritance basic example
+---------------------------------------------------------------------------------------------------------------------------------------------
+public class InheritanceExample1{
+	
+	int a = 10;
+	int b = 20;
+	
+	public static void main(String[] args){
+		InheritanceExample1 ie1 = new InheritanceExample1();
+		ie1.add();
+		ie1.sub();
+		ie1.mul();
+	}
+	
+	public void add(){
+		System.out.println("This is Add");
+	}
+	public void sub(){
+		System.out.println("This is Sub");
+	}
+	public void mul(){
+		System.out.println("This is Mul");
+	}
+}
+
+class InheritanceExample2 extends InheritanceExample1 {
+	
+	int a = 10;
+	int b = 20;
+	
+	public static void main(String[] args){
+		InheritanceExample2 ie2 = new InheritanceExample2();
+		ie2.add();
+		ie2.sub();
+		ie2.mul();
+		ie2.div();
+	}
+	
+
+	
+	public void div(){
+		System.out.println("This is Div");
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

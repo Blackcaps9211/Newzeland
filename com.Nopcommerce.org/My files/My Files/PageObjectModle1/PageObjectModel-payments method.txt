@@ -1,0 +1,206 @@
+package Pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class Nop_LoginPage {
+
+	WebDriver driver2;
+
+	public Nop_LoginPage(WebDriver d) {
+		this.driver2 = d;
+	}
+
+	By username = By.id("Email");
+	By password = By.id("Password");
+	By loginBtn = By.xpath("//*[text()='Log in']");
+
+	public void enterEmailId() {
+		driver2.findElement(username).clear();
+		driver2.findElement(username).sendKeys("admin@yourstore.com");
+	}
+
+	public void enterPassword() {
+
+		driver2.findElement(password).clear();
+		driver2.findElement(password).sendKeys("admin");
+
+	}
+
+	public void clickOnLoginBtn() {
+		driver2.findElement(loginBtn).click();
+	}
+
+}
+-----------------------------------------------------------------------------------------------------------------------------------
+package Pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class Nop_DashboardPage {
+
+	WebDriver driver;
+
+	public Nop_DashboardPage(WebDriver d) {
+		this.driver = d;
+	}
+
+	By dashboard = By.xpath("//h1[contains(text(),'Dashboard')]");
+
+	public boolean verifyDashboard() {
+		boolean val = driver.findElement(dashboard).isDisplayed();
+		return val;
+	}
+
+}
+--------------------------------------------------------------------------------------------------------------------------------------
+package Pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class CommonUtilities {
+
+	WebDriver driver;
+	
+	public CommonUtilities(WebDriver d) {
+		driver = d;
+	}
+
+	By configuration = By.xpath("//p[contains(text(),'Configuration')]");
+	By pamentMethods = By.xpath("//p[contains(text(),'Payment methods')]");
+	
+	By logoutBtn = By.linkText("Logout"); 
+	
+	public void clickOnConfiguration() {
+		driver.findElement(configuration).click();
+	}
+
+	public void clickOnPaymentMethods() {
+		driver.findElement(pamentMethods).click();
+	}
+	
+	public void doLogout() {
+		driver.findElement(logoutBtn).click();
+	}
+	
+	
+
+}
+----------------------------------------------------------------------------------------------------------------------------------------
+package Pages;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class Nop_PaymentMethodsPage {
+
+	WebDriver driver;
+
+	public Nop_PaymentMethodsPage(WebDriver d) {
+		this.driver = d;
+	}
+
+	By paymentMethods = By.xpath("//h1[contains(text(),'Payment methods')]");
+
+	By pmEditBtn = By.id("buttonEdit_paymentmethods_gridPayments_PayPalCommerce");
+
+	By pmDisplayOrder = By.xpath("(//input[@class='userinput'])[2]");
+
+	By pmUpdateBtn = By.id("buttonConfirm_paymentmethods_gridPayments_PayPalCommerce");
+
+	public boolean verifyPMPage() {
+		boolean val = driver.findElement(paymentMethods).isDisplayed();
+		return val;
+	}
+
+	public void clickOnPMEditBtn() {
+		driver.findElement(pmEditBtn).click();
+	}
+
+	public void enterpmDisplayOrder() {
+		driver.findElement(pmDisplayOrder).clear();
+		driver.findElement(pmDisplayOrder).sendKeys("-2");
+	}
+
+	public void clickOnPMUpdateBtn() {
+		driver.findElement(pmUpdateBtn).click();
+	}
+
+}
+---------------------------------------------------------------------------------------------------------------------------
+package NopCommerceTestCases;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import Pages.CommonUtilities;
+import Pages.Nop_DashboardPage;
+import Pages.Nop_LoginPage;
+import Pages.Nop_PaymentMethodsPage;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class ValidatePaymentMethodsTest {
+
+	public static void main(String[] args) throws Exception {
+
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
+
+		Nop_LoginPage nlp = new Nop_LoginPage(driver);
+		Nop_DashboardPage ndp = new Nop_DashboardPage(driver);
+		CommonUtilities cu = new CommonUtilities(driver);
+		Nop_PaymentMethodsPage npmp = new Nop_PaymentMethodsPage(driver);
+
+		driver.manage().window().maximize();
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+
+		driver.get("https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F");
+
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.id("Email"))));
+
+		nlp.enterEmailId();
+		nlp.enterPassword();
+		nlp.clickOnLoginBtn();
+
+		boolean appear = ndp.verifyDashboard();
+		if (appear == true) {
+			cu.clickOnConfiguration();
+			Thread.sleep(3000);
+			cu.clickOnPaymentMethods();
+			wait.until(ExpectedConditions
+					.visibilityOf(driver.findElement(By.xpath("//h1[contains(text(),'Payment methods')]"))));
+
+			boolean pmpAppear = npmp.verifyPMPage();
+			if (pmpAppear == true) {
+				npmp.clickOnPMEditBtn();
+				Thread.sleep(3000);
+				npmp.enterpmDisplayOrder();
+				npmp.clickOnPMUpdateBtn();
+				Thread.sleep(5000);
+				driver.switchTo().alert().accept();
+			} else {
+				System.out.println("PaymentMenthods link not click successful");
+			}
+
+		} else {
+			System.out.println("Login Unsuccessful");
+		}
+
+		cu.doLogout();
+
+		Thread.sleep(7000);
+		driver.quit();
+
+	}
+
+}
+

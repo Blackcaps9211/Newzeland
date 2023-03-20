@@ -1,0 +1,267 @@
+1)str.charAt()
+--------------------------------------------------------
+package stringConcept;
+
+public class CharAtMethodExample {
+
+	public static void main(String[] args) {
+
+		String str1 = "Shareef";
+
+		char c = str1.charAt(4);
+
+		System.out.println(c);
+
+	}
+
+}
+-------------------------------------------------------------------------------------------------------------------------------------------
+2)str.compareTo()
+-----------------------------------------------
+package stringConcept;
+
+public class CompareToStringMethod {
+
+	public static void main(String[] args) {
+
+		String str1 = "ShareTest";
+		String str2 = "Shareef";
+
+		System.out.println(str1.compareTo(str2));//-negative int value
+
+	}
+
+}
+------------------------------------------------------------------------------------------------------------------------------------------
+3)str.contains()
+----------------------------------------------
+package stringConcept;
+
+public class ContainsStringMethod {
+
+	public static void main(String[] args) {
+		
+		
+		String str1 = "I am a good SDET";
+		boolean val = str1.contains("SDET");
+		System.out.println(val);
+		
+		
+		
+	}
+
+}
+------------------------------------------------------------------------------------------------------------------------------------------
+str.equals()
+-----------------------------------------------------------
+package stringConcept;
+
+public class EqualsStringMethod {
+
+	public static void main(String[] args) {
+		
+		String str1 = new String("RADHA");
+		String str2 = "Radha";
+		boolean val = str1.equalsIgnoreCase(str2);
+		
+		System.out.println(val); //true
+		
+		
+	}
+
+}
+-----------------------------------------------------------------------------------------------------------------------------------
+str.indexOf()
+------------------------------------------------------------------------
+package stringConcept;
+
+public class IndexOfStringMethod {
+
+	public static void main(String[] args) {
+		
+		String str1 = "Sheeareef";
+		int val = str1.indexOf("ee");
+		System.out.println(val);
+		
+		
+		int val2 = str1.lastIndexOf("ee");
+		System.out.println(val2);
+		
+		
+		
+	}
+
+}
+--------------------------------------------------------------------------------------------------------------------------------------
+str.isEmpty()
+---------------------------------------------------------------------------
+package stringConcept;
+
+public class IsEmptyStringMethod {
+
+	public static void main(String[] args) {
+		
+		String str1 = new String("Shareef");
+		String str2 = "";
+		
+		boolean val1 = str1.isEmpty();
+		boolean val2 = str2.isEmpty();
+		
+		System.out.println(val1);
+		System.out.println(val2);
+		
+	}
+
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+str.length()
+-----------------------------------------------------------
+package stringConcept;
+
+public class LengthStringMethod {
+
+	public static void main(String[] args) {
+		
+		String str1 = "Thank you God";
+		int val = str1.length();
+		System.out.println(val);
+		
+		
+		
+	}
+
+}
+---------------------------------------------------------------------------------------------------------------------------------------
+str.replace()
+------------------------------------------------------------------------
+package stringConcept;
+
+public class ReplaceStringMethod {
+
+	public static void main(String[] args) {
+		
+		String str1 = "Thank you God";
+		System.out.println("before replace : "+str1);
+		str1 = str1.replace("God", "Teacher");
+		System.out.println("after replace : "+str1);
+		
+		str1 = str1.replaceAll("God", "Teacher");
+		System.out.println("after replace all : "+str1);
+		
+		
+	}
+
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+str.split()
+-----------------------------------------------------------------------------
+package stringConcept;
+
+public class SpiltStringMethod {
+
+	public static void main(String[] args) {
+
+		String lovers = "Radha Krishna";
+		
+		System.out.println(lovers);
+		
+		String[] val = lovers.split(" ");
+		
+		for (String val2 : val) {
+			System.out.println(val2);
+		}
+
+	}
+
+}
+------------------------------------------------------------------------------------------------------------------------------------
+str.substring()
+----------------------------------------------------------------------------------------
+package stringConcept;
+
+public class SubStringStringMethod {
+
+	public static void main(String[] args) {
+		
+		String str1 = "Shareef Testing In IT Industry";
+		
+		String str2 = str1.substring(8, 14+1);
+		
+		System.out.println(str2);
+		
+	}
+
+}
+---------------------------------------------------------------------------------------------------------------------------------------
+str.toCharArray()
+-------------------------------------------------------------------------------------
+package stringConcept;
+
+public class ToCharArrayStringMethod {
+
+	public static void main(String[] args) {
+		
+		String str1 = "ShareefRadha";
+		System.out.println(str1);
+		
+		char[] val = str1.toCharArray();
+		
+		for( char val2 : val) {
+			System.out.println(val2);
+		}
+		
+	}
+
+}
+----------------------------------------------------------------------------------------------------------------------------------------
+str.toLowerCase()&&str.toUpperCase()
+-----------------------------------------------------------
+package stringConcept;
+
+public class UperAndLoweCaseStringMethods {
+
+	public static void main(String[] args) {
+		
+		
+		String str1 = new String("shareef");
+		String str2 = str1.toLowerCase();
+		String str3 = new String("shareef");
+		String str4 = str1.toUpperCase();
+		
+		System.out.println(str1); //shareef
+		System.out.println(str2); //shareef
+		System.out.println(str4); //SHAREEF
+		
+		
+		System.out.println(str1 == str2); //true
+		System.out.println(str1 == str4); //false
+		System.out.println(str1 == str3); //false
+		
+		
+	}
+
+}
+----------------------------------------------------------------------------------------------------------------------
+str.trim()
+-----------------------------------------------------
+package stringConcept;
+
+public class SpiltStringMethod {
+
+	public static void main(String[] args) {
+
+		String lovers = "Radha Krishna";
+		
+		System.out.println(lovers);
+		
+		String[] val = lovers.split(" ");
+		
+		for (String val2 : val) {
+			System.out.println(val2);
+		}
+
+	}
+
+}
+
+

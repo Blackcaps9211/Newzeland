@@ -1,0 +1,99 @@
+programs on Datatypes
+
+
+
+---------------------------------------------------------------------------------------------------------
+public class DataTypesExample3{
+
+	public static void main(String[] args){
+	
+		long a = 9223372036854775807l;
+	
+		System.out.println(a);
+	
+	}
+
+
+
+}
+
+ 
+------------------------------------------------------------------------------------------------------------------
+
+public class DataTypesExample4{
+
+	public static void main(String[] args){
+	
+		float a = 10.5f;
+		System.out.println(a);
+		
+		double b = 10.5;
+		System.out.println(b);
+		
+	}
+}
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+public class DataTypesExample5{
+	
+	public static void main(String[] args){
+	
+		boolean b = true;
+		System.out.println(b);
+	
+	}
+
+}
+
+-------------------------------------------------------------------------------------------------------------------------
+
+
+public class DataTypesExample6{
+	
+	public static void main(String[] args){
+	
+		char c = 'I';
+		System.out.println(c);
+	
+	}
+
+}
+
+-------------------------------------------------------------------------------------------------------------------------------
+
+
+public class DataTypesExample7{
+		
+	boolean b;
+	char c;
+	byte by;
+	short s;
+	int i;
+	long l;
+	float f;
+	double d;
+		
+	public static void main(String[] args){
+		
+		DataTypesExample7 dte = new DataTypesExample7();
+		System.out.println(dte.b);
+		System.out.println(dte.c);
+		System.out.println(dte.by);
+		System.out.println(dte.s);
+		System.out.println(dte.i);
+		System.out.println(dte.l);
+		System.out.println(dte.f);
+		System.out.println(dte.d);
+	
+	}
+
+}
+
+---------------------------------------------------------------------------------------------------------------------------------
+
+
+
+

@@ -1,0 +1,168 @@
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------
+ArrayExample2
+======================
+public class ArrayExample2 {
+
+	public static void main(String[] args) {
+		
+		int[] a = new int[15];
+		
+		
+		int a = 10;
+		int b = 20;
+		int c = 30;
+		int d = 40;
+		int e = 50;
+		int f = 60;
+		int g = 70;
+		int h = 80;
+		int i = 90;
+		int j = 100;
+		int k = 110;
+		int l = 120;
+		int m = 130;
+		int n = 200;
+		int o = 210;
+		int p = 220;
+		
+		
+		System.out.println(a);
+		System.out.println(b);
+		System.out.println(c);
+		System.out.println(d);
+		System.out.println(e);
+		System.out.println(f);
+		System.out.println(g);
+		System.out.println(h);
+		System.out.println(i);
+		System.out.println(j);
+		System.out.println(k);
+		System.out.println(l);
+		System.out.println(m);
+		System.out.println(n);
+		System.out.println(o);
+		System.out.println(p);
+		
+		
+	}
+
+}
+--------------------------------------------------------------------------------------------------------------------------------
+ArrayExample4
+======================================
+public class ArrayExample4 {
+
+	public static void main(String[] args) {
+		
+		int[] a;
+		int []b;
+		int c[];
+		
+		
+	}
+
+}
+-----------------------------------------------------------------------------------------------------------------------------------
+ArrayExample5
+============================================
+public class ArrayExample5 {
+
+	public static void main(String[] args) {
+		
+		int[][] a;
+		int [][]b;
+		int c[][];
+		
+		int[] []d;
+		int[] e[];
+		int []f[];
+		
+		
+	}
+
+}
+--------------------------------------------------------------------------------------------------------------------------------
+ArrayExample6
+=======================================================
+public class ArrayExample6 {
+
+	public static void main(String[] args) {
+		
+		int a,b,c;
+		
+		a = 10;
+		b = 20;
+		c = 30;
+		
+		System.out.println(a);
+		System.out.println(b);
+		System.out.println(c);
+		
+		
+		
+	}
+
+}
+---------------------------------------------------------------------------------------------------------------------------------
+ArrayExample7
+==========================================================
+public class ArrayExample7 {
+
+	public static void main(String[] args) {
+		
+		int[][] a,b;
+		int [][]a,b;
+		int[] a[],b[];
+		int[] []a,b[];
+		int[] []a,[]b; // compileTimeError
+		
+		
+	}
+
+}
+-----------------------------------------------------------------------------------------------------------------------------------
+ArrayExample8
+==============================================================
+public class ArrayExample8 {
+
+	public static void main(String[] args) {
+		
+		int[] []a[];
+		
+		
+	}
+
+}
+-------------------------------------------------------------------------------------------------------------------------
+ArrayExample9
+==============================================================
+public class ArrayExample9 {
+
+	public static void main(String[] args) {
+		
+		int[] a = new int[4];
+		
+		String[] s = new String[3];
+		
+		a[0] = 10;
+		a[1] = 20;
+		a[2] = 30;
+		a[3] = 40;
+	
+		System.out.println(a[3]);
+		
+		System.out.println(a.getClass().getName());
+		
+		System.out.println(s.getClass().getName());
+		
+		
+		
+		
+	}
+
+}

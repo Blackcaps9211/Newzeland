@@ -1,0 +1,60 @@
+                                        Public Access Modifier
+===============================================================================================================
+package AccessModifiers;
+
+public class AMExample2 {
+	
+	public int x = 10;
+	public int y = 20;
+	
+	public static void main(String[] args) {
+		AMExample2 ame = new AMExample2();
+		ame.add(ame.x, ame.y);
+	}
+
+	public void add(int a, int b) {
+		System.out.println(a + b);
+	}
+
+}
+
+---------------------------------------------------------------------------------------------------------------------
+package AccessModifiers;
+
+public class AMExample3 {
+
+	public static void main(String[] args) {
+		
+		AMExample2 ame = new AMExample2();
+		ame.add(ame.x, ame.y);
+		
+	}
+
+}
+--------------------------------------------------------------------------------------------------------------------------
+package arrays;
+
+import AccessModifiers.AMExample2;
+
+public class AMExample4{
+
+public static void main(String[] args){
+
+AMExample2 ame = new AMExample2();
+
+ame.add(ame.x,ame.y);
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

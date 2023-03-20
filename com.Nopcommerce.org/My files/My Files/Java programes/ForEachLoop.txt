@@ -1,0 +1,39 @@
+package javapractice;
+
+import java.time.Duration;
+import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class ForEachLoopExample {
+
+	public static void main(String[] args) throws Exception {
+
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+
+		driver.manage().window().maximize();
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+
+		driver.get("https://admin-demo.nopcommerce.com/login?ReturnUrl=%2FAdmin%2FCategory%2FList");
+
+		Thread.sleep(7000);
+
+		List<WebElement> allInputs = driver.findElements(By.xpath("//input"));
+
+		for (WebElement input : allInputs) {
+
+			String typeVal = input.getAttribute("type");
+			System.out.println(typeVal);
+			Thread.sleep(3000);
+		}
+
+	}
+
+}

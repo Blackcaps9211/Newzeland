@@ -1,0 +1,17 @@
+package javapractice;
+
+public class DoWhileLoopExample {
+
+	public static void main(String[] args) {
+
+		int count = 0;
+
+		int i = 1;
+		do {
+			System.out.println(i + " This is do while loop");
+			i++;
+		} while (i <= count);
+
+	}
+
+}

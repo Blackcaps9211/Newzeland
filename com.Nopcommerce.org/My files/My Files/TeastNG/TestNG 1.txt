@@ -1,0 +1,331 @@
+Du                                                                TestCase1
+======================================================================================================
+package testNG;
+
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterSuite;
+
+public class Example1 {
+  @Test
+  Run  |  Debug
+  public void f() {
+  }
+  @BeforeMethod
+  public void beforeMethod() {
+  }
+
+  @AfterMethod
+  public void afterMethod() {
+  }
+
+  @BeforeClass
+  public void beforeClass() {
+  }
+
+  @AfterClass
+  public void afterClass() {
+  }
+
+  @BeforeTest
+  public void beforeTest() {
+  }
+
+  @AfterTest
+  public void afterTest() {
+  }
+
+  @BeforeSuite
+  public void beforeSuite() {
+  }
+
+  @AfterSuite
+  public void afterSuite() {
+  }
+
+}
+--------------------------------------------------------------------------------------------------------------------------------
+                                                           AnnotationsExample1
+================================================================================================================
+package testNG;
+
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class AnnotationsExample1 {
+
+	@Test
+      Run  |  Debug
+	public void testMethod1() {
+		System.out.println("Test Method1");
+	}
+	
+	@Test
+      Run  |  Debug
+	public void testMethod2() {
+		System.out.println("Test Method2");
+	}
+
+	@AfterMethod
+	public void afterMethod() {
+		System.out.println("after method");
+	}
+
+	@BeforeMethod
+	public void beforeMethod() {
+		System.out.println("before method");
+	}
+	
+	@BeforeClass
+	public void beforeClass() {
+		System.out.println("Before Class");
+	}
+	
+	@AfterClass
+	public void afterClass() {
+		System.out.println("After Class");
+	}
+	
+	@BeforeTest
+	public void beforeTest() {
+		System.out.println("Before Test");
+	}
+	
+	@AfterTest
+	public void afterTest() {
+		System.out.println("After Test");
+	}
+	
+	@BeforeSuite
+	public void beforeSuite() {
+		System.out.println("Before Suite");
+	}
+	
+	@AfterSuite
+	public void afterSuite() {
+		System.out.println("After Suite");
+	}
+	
+
+}
+
+-------------------------------------------------------------------------------------------------------------------------------------
+                                                          TestCase1
+==============================================================================================================================
+package testNG;
+
+import org.testng.annotations.Test;
+
+public class TestCase1 {
+
+	@Test
+      Run  |  Debug
+	public void testMethod1() {
+		System.out.println("Test Method of TestNG");
+	}
+
+}
+------------------------------------------------------------------------------------------------------------------------------------
+                                                           TestCase2
+============================================================================================================================
+package testNG;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class TestCase2 {
+
+	WebDriver driver = new ChromeDriver();
+
+	@BeforeTest
+	public void setUp() {
+
+		WebDriverManager.chromedriver().setup();
+
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+		driver.manage().window().maximize();
+
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+
+		driver.get("https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F");
+		
+		Reporter.log("chromedriver SetUp is done");
+	}
+
+	@Test
+      Run  |  Debug
+	public void nopLogin() {
+
+		driver.findElement(By.id("Email")).clear();
+		
+		driver.findElement(By.id("Email")).sendKeys("admin@yourstore.com");
+		driver.findElement(By.id("Password")).clear();
+		
+		driver.findElement(By.id("Password")).sendKeys("admin");
+		
+		driver.findElement(By.xpath("//button[@type = 'submit']")).click();
+		Reporter.log("Login Button Clicked Successfully");
+	}
+	
+	@AfterTest
+	public void tearDown() throws Exception {
+		Thread.sleep(10000);
+		driver.quit();
+		
+		Reporter.log("Chrome Browser Closed Successfully");
+		
+	}
+
+}
+------------------------------------------------------------------------------------------------------------------------------
+                                                      TestCase3
+===================================================================================================================
+package testNG;
+
+import org.testng.annotations.Test;
+
+public class TestCase3 {
+
+	@Test(priority = 3)
+      Run  |  Debug
+	public void testMethodOne() {
+		System.out.println("Test Method1");
+	}
+	
+	@Test(priority = 1)
+      Run  |  Debug
+	public void testMethodThree() {
+		System.out.println("Test Method3");
+	}
+	
+	@Test(priority = 2)
+      Run  |  Debug
+	public void testMethodTwo() {
+		System.out.println("Test Method2");
+	}
+	
+	@Test(priority = 0)
+      Run  |  Debug
+	public void testMethodFour() {
+		System.out.println("Test Method4");
+	}
+	
+	
+	
+	
+	
+}
+-------------------------------------------------------------------------------------------------------------------------------------
+                                                                   TestCase4
+============================================================================================================================
+package testNG;
+
+import org.testng.annotations.Test;
+
+public class TestCase4 {
+
+	@Test(invocationCount = 1000000000, invocationTimeOut = 1)
+      Run  |  Debug
+	public void testMethod() {
+		System.out.println("Test Method");
+	}
+	
+	
+	
+	
+	
+}
+------------------------------------------------------------------------------------------------------------------------------
+                                                                   TestCase5
+===========================================================================================================================
+package testNG;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class TestCase5 {
+
+	@Test()
+      Run  |  Debug
+	public void method1() {
+		Assert.fail();
+		System.out.println("Method1");
+		
+	}
+	
+	@Test(dependsOnMethods = "method1")
+      Run  |  Debug
+	public void method2() {
+		System.out.println("Method2");
+	}
+	
+	@Test
+      Run  |  Debug
+	public void method3() {
+		System.out.println("Method3");
+	}
+	
+	@Test(dependsOnMethods = "method2")
+      Run  |  Debug
+	public void method4() {
+		System.out.println("Method4");
+	}
+	
+	
+}
+-----------------------------------------------------------------------------------------------------------------
+                                               smoke.xml
+==============================================================================================================
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="NopCommerce">
+
+  <test thread-count="5" name="FunctionalTest">
+  
+    <classes>
+    
+      <class name="testNG.AnnotationsExample1"/>
+      <class name="testNG.Example1"/>
+      <class name="testNG.TestCase1"/>
+      <class name="testNG.TestCase2"/>
+      
+    </classes>
+  </test> 
+</suite> 
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+

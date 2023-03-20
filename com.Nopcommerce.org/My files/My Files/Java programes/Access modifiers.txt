@@ -1,0 +1,156 @@
+
+
+Protected specifier or Accsses Modifires Examples
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Example1 for Protected specifier
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+package Javapractice;
+public class ProtectedExample1 {
+	protected int a = 10;
+	protected void method1() {
+		System.out.println("Method1");
+	}
+	public static void main(String[] args) {
+		ProtectedExample1 pe1 = new ProtectedExample1();
+		System.out.println(pe1.a);
+		pe1.method1();
+	}
+}
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Example2 for Protected specifier
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+package Javapractice;
+public class ProtectedExample2 {
+	public static void main(String[] args) {	
+		ProtectedExample1 pe2 = new ProtectedExample1();
+		System.out.println(pe2.a);
+		pe2.method1();	
+	}
+}
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Example3 for Protected specifier
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+package newzealand1;
+import Javapractice.ProtectedExample1;
+public class ProtectedExample3 extends ProtectedExample1 {
+	public static void main(String[] args) {
+		ProtectedExample3 pe3 = new ProtectedExample3();
+		System.out.println(pe3.a);
+		pe3.method1();
+	}
+}
+
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Example for Static specifier or Access modifire
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+package Javapractice;
+public class StaticExample1 {
+	public static void method1() {
+		System.out.println("This is static method1");
+	}
+	public void method2() {
+		StaticExample1.method1();
+	}
+	public static void method3() {
+		StaticExample1.method1();
+	}
+	public static void main(String[] args) {
+		StaticExample1.method1();
+		StaticExample1.method3();
+		StaticExample1 se1 = new StaticExample1();
+		se1.method2();
+		System.out.println(StaticExample1.StaticExample2.a);
+	}
+	static class StaticExample2 {
+		static int a = 20;
+	}
+}
+
+
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Example for Final specifier or Access modifire
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+public final class FinalExample1 {
+
+	final int a = 10;
+	public static void main(String[] args) {
+		FinalExample1 fe1 = new FinalExample1();
+		fe1.a = 20;	//CPE
+	}
+	public final void method1() {
+		System.out.println("method1");
+	}
+}
+
+class FinalExample2 extends FinalExample1{ //CPE
+	public static void main(String[] args) {
+		FinalExample2 fe2 = new FinalExample2();
+		fe2.method1();
+	}	
+}
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Example for Private specifier or Access modifire
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+public class PrivateExample1{
+	private int a = 10;	
+	private void method1(){
+		System.out.println("Method1");
+	}
+	public static void main(String[] args){
+		PrivateExample1 pe1 = new PrivateExample1();
+		System.out.println(pe1.a);
+		pe1.method1();
+	}
+	private class PrivateExample3{	
+	}	
+}
+
+class PrivateExample2{
+	public static void main(String[] args){
+		PrivateExample1 pe2 = new PrivateExample1();
+		System.out.println(pe2.a); //CPE
+		pe2.method1();//CPE
+		PrivateExample3 pe3 = new PrivateExample3(); //CPE
+	}
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

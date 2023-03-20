@@ -1,0 +1,112 @@
+package ExceptionHandling;
+public class ExceptionHandlingEx1 {
+	public static void main(String[] args) {
+		String str = null;
+		int l = 0;
+		try {
+			l = str.length();
+			System.out.println(10 / 0);
+		} 
+		catch (Exception npe) {
+			npe.printStackTrace();
+			System.out.println("length values is : " + l);
+			int a = 10;
+			int b = 5;
+			int c = a / b;
+			System.out.println("division C value is : " + c);
+		}
+		catch (Throwable ae) {
+			ae.printStackTrace();
+		}
+		finally {
+			System.out.println("Try and Catch blocks got executed");
+		}
+		
+
+	}
+
+}
+================================================================================================================
+package ExceptionHandling;
+
+public class ExceptionHandlingEx2 {
+
+	public static void main(String[] args) {
+		
+		
+		double amount = 99.9;
+		
+		if(amount>=100) {
+			System.out.println("we can withdraw min 100 maximum "+amount);
+		}else {
+			throw new ArithmeticException("insufficient balance "+amount);
+			
+		}
+		
+	 	throw new NullPointerException("Our own message");
+	 	
+		
+		
+	}
+
+}
+================================================================================================================
+package ExceptionHandling;
+
+import java.io.PrintWriter;
+
+public class ExceptionHandlingEx3 {
+
+	public static void main(String[] args) throws Exception {
+
+		System.out.println("Hello");
+
+		Thread.sleep(3000);
+
+		System.out.println("How are you");
+
+		Thread.sleep(5000);
+
+		System.out.println("Good Bye");
+		
+		PrintWriter pw = new PrintWriter("abc.txt");
+
+	}
+
+}
+==========================================================================================================================
+class ExceptionHandlingEx3{
+	public static void main(String[] args){
+		System.out.println(10/0); //RE ArithmeticException at Runtime throws by JVM
+	}
+}
+
+
+class ExceptionHandlingEx4{
+	static String str;
+	public static void main(String[] args){
+		System.out.println(str.length()); // RE NullPointerException at RunTime throws by JVM
+	}
+}
+====================================================================================================================
+import java.io.*;
+public class ExceptionHandlingEx4 {
+
+	public static void main(String[] args) throws Exception, Throwable {
+
+		System.out.println("Hello");
+
+		Thread.sleep(3000);
+
+		System.out.println("How are you");
+
+		Thread.sleep(5000);
+
+		System.out.println("Good Bye");
+		
+		PrintWriter pw = new PrintWriter("abc.txt");
+
+	}
+
+}
+

@@ -1,0 +1,169 @@
+                                               TestCase6
+===========================================================================================================
+package testNG;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class TestCase6 {
+	
+	@Test(groups = "smoke", priority = 0)
+      Run |  Debug
+	public void testMethod1() {
+		Assert.fail();
+		System.out.println("Test Method1");
+	}
+	
+	@Test(description = "This is a TestMethod2 example", 
+			groups = "Regression", dependsOnGroups = "smoke")
+      Run |  Debug
+	public void testMethod2() {
+		System.out.println("Test Method2");
+	}
+	
+	@Test(groups = "smoke", priority = 1, dependsOnMethods = "testMethod1")
+      Run |  Debug
+	public void testMethod3() {
+//		Assert.fail();
+		System.out.println("Test Method3");
+	}
+	
+	@Test(groups = "Regression", dependsOnGroups = "smoke")
+      Run |  Debug
+	public void testMethod4() {
+		System.out.println("Test Method4");
+	}
+	
+	@Test(groups = "Regression", dependsOnGroups = "smoke")
+      Run |  Debug
+	public void testMethod5() {
+		System.out.println("Test Method5");
+	}
+	
+	
+	
+}
+-----------------------------------------------------------------------------------------------------------------------------
+                                                                     TestCase7
+=========================================================================================================================
+package testNG;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class TestCase7 {
+
+	@Test
+      Run |  Debug
+	public void testMethod1() {
+		
+		String str1 = "Testing";
+		String str2 = "Testing";		
+		
+		Assert.assertEquals(str1.equals(str2), true, "bothe values are not same");
+		
+	}
+
+}
+------------------------------------------------------------------------------------------------------------------------------------
+                                                         TestCase8
+=====================================================================================================================
+package testNG;
+
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
+
+public class TestCase8 {
+
+	SoftAssert sa = new SoftAssert();
+	
+	@Test
+      Run |  Debug
+	public void method2() {
+		String str1 = "Shareef";
+		String str2 = "shareef";
+		sa.fail();
+		System.out.println("method2");
+		System.out.println("This is Method2");
+		sa.assertEquals(str1.equals(str2), true, "please check the values");
+		System.out.println("This is Method2 and it one of the methods from TestCase8");
+		sa.assertAll();
+
+	}
+
+}
+-------------------------------------------------------------------------------------------------------------------------------
+                                                               TestCase9
+===========================================================================================================================
+package testNG;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class TestCase9 {
+
+	@Test(groups = "Smoke")
+      Run |  Debug
+	public void method1() throws Exception {
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F");
+		Thread.sleep(3000);
+		driver.quit();
+	}
+
+	@Test(groups = "Regression")
+	public void method2() throws Exception {
+		WebDriverManager.firefoxdriver().setup();
+		WebDriver driver = new FirefoxDriver();
+		driver.get("https://www.google.com");
+		Thread.sleep(3000);
+		driver.quit();
+	}
+
+}
+
+class TestCase10{
+	@Test(groups = "Sanity")
+      Run |  Debug
+	public void method2() throws Exception {
+		WebDriverManager.firefoxdriver().setup();
+		WebDriver driver = new FirefoxDriver();
+		driver.get("https://www.amazon.com");
+		Thread.sleep(3000);
+		driver.quit();
+	}
+}
+
+-------------------------------------------------------------------------------------------------------------------------   
+                                                    ParallelTest.XML
+==================================================================================================================
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Suite">
+  <test thread-count="2" name="Test" parallel="classes" >
+    <classes>
+      <class name="testNG.TestCase9"/>
+      <class name="testNG.TestCase10"/>
+    </classes>
+  </test> 
+</suite> 
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+

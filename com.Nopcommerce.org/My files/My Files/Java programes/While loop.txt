@@ -1,0 +1,19 @@
+package javapractice;
+
+public class WhileLoopExample {
+
+	public static void main(String[] args) {
+
+		int count = 5;
+
+		System.out.println("******************");
+		int i = 1;
+		while (i <= count) {
+			System.out.println(i + " Testing");
+			i++;
+		}
+		System.out.println("******************");
+
+	}
+
+}

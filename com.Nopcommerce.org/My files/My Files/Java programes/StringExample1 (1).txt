@@ -1,0 +1,23 @@
+package stringConcept;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+public class StringExample1 {
+
+	public static void main(String[] args) throws Exception {
+
+//		String un = "Shareef";
+//		String pws = "admin";
+
+		WebDriver driver;
+
+		String un = new String("Shareef");
+		String pws = new String("admin");
+
+		System.out.println(un);
+		System.out.println(pws);
+
+	}
+
+}

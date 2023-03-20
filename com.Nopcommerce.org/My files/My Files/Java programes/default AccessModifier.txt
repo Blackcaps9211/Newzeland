@@ -1,0 +1,40 @@
+                                              <default> AccessModifier
+==========================================================================================================
+package AccessModifiers;
+
+class AMExample4 {
+
+	int x = 20;
+	int y = 40;
+
+	void multiplication(int a, int b) {
+		System.out.println(a * b);
+	}
+
+	public static void main(String[] args) {
+		AMExample4 ame = new AMExample4();
+		ame.multiplication(ame.x, ame.y);
+	}
+}
+--------------------------------------------------------------------------------------------------------------
+package AccessModifiers;
+
+public class AMExample6 {
+
+	public static void main(String[] args) {
+		AMExample4 ame = new AMExample4();
+		ame.multiplication(ame.x, ame.y);
+	}
+
+}
+---------------------------------------------------------------------------------------------------------------------------
+package arrays;
+
+public class AMTest {
+
+	public static void main(String[] args) {
+		AMExample4 ame = new AMExample4();// compile time error
+		
+	}
+
+}

@@ -1,0 +1,19 @@
+package RegularExpression;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class RegExExample1 {
+	public static void main(String[] args) {
+		// https://docs.oracle.com/javase/7/docs/api/java/util/regex/Pattern.html
+		String str = "SaiLakshmi123$Kusuma456#";
+		Pattern p = Pattern.compile("[A-Z]");
+		Matcher m = p.matcher(str);
+		while (m.find()) {
+			System.out.print(m.group());
+		}
+
+	}
+
+}
+

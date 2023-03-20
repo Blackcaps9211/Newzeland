@@ -1,0 +1,25 @@
+package javapractice;
+
+public class Example29 {
+
+	public void method1() {
+		int a = 10;
+		int b = 20;
+		System.out.println(a + b);
+	}
+
+	public void method2() {
+		int a = 100;
+		int b = 200;
+		System.out.println(a * b);
+	}
+
+	public static void main(String[] args) {
+
+		Example29 ex = new Example29();
+		ex.method1();
+		ex.method2();
+
+	}
+
+}

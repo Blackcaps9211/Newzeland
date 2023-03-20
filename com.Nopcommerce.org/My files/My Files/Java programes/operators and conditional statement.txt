@@ -1,0 +1,170 @@
+Relational operator
+-------------------------------------------------------------------------------------------------------------------
+public class RelationalOperator
+{
+ public static void main (String[]args)
+ {
+	int a = 25000;
+	int b = 125000;
+	
+	if(a>b){
+		System.out.println("A value is bigger");
+	}
+	if(a<b){
+		System.out.println("B value is Bigger");
+	}
+	
+ } 
+}
+
+--------------------------------------------------------------------------------------------------------------------------
+Logical operator
+---------------------------------------------------------------------------------------------
+public class LogicalOperator
+{
+ public static void main (String[]args)
+ {
+	int a = 25000;
+	int b = 125000;
+	int c = 35000;
+	
+	if(a>b && a>c){
+		System.out.println("A value is bigger");
+	}
+	if(b>a && b>c){
+		System.out.println("B value is Bigger");
+	}
+	if(c>a && c>b){
+			System.out.println("C value is Bigger");
+	}
+	
+ }
+ 
+}
+----------------------------------------------------------------------------------------------------------------------------
+Assignment operator
+----------------------------------------------------------------------------------------------------
+public class AssignmentOperator
+{
+ public static void main (String[]args)
+ {
+	
+	int a = 10;
+	a += 10;
+	System.out.println(a);
+	
+	a -= 10;
+	System.out.println(a);
+	
+	a *= 10;
+	System.out.println(a);
+	
+	a /= 10;
+	System.out.println(a);
+	
+	a %= 10;
+	System.out.println(a);
+	
+	
+	
+	
+ }
+ 
+}
+-----------------------------------------------------------------------------------------------------------------
+Ternary operator
+--------------------------------------------------------------------------------------------
+public class TernaryOperator
+{
+ public static void main (String[]args)
+ {
+	
+	int a = 10;
+	int b = 10;
+	
+	int c = (b>a)?35:15;
+	
+	System.out.println(c);
+	
+ }
+ 
+}
+
+--------------------------------------------------------------------------------------------------------------------------------
+conditional statement
+-----------------------------------------------------------------------------------------------------
+public class ConditionalStatement1
+{
+ public static void main (String[]args)
+ {
+	
+	int a = 100;
+	int b = 102;
+	int c = 303;
+	
+	if(a>b && a>c){
+		System.out.println("a is big");
+	}
+	else if(c>a && c>b){
+		System.out.println("c is big");
+	}
+	else if(b>a && b>c){
+		System.out.println("b is big");
+	}
+	else{
+		System.out.println("please check the values");
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+ }
+ 
+}
+------------------------------------------------------------------------------------------------------------------------------
+Switch case
+-------------------------------------------------------------------------------------------
+package javapractice;
+
+public class SwitchCaseExample1 {
+
+	public static void main(String[] args) {
+		
+		int a = 4;
+	
+		switch (a) {
+		case 1:
+			System.out.println("Monday");
+			break;
+		case 2:
+			System.out.println("Tuesday");
+			break;
+		case 3:
+			System.out.println("Wednesday");
+			break;
+		case 4:
+			System.out.println("Thursday");
+			break;
+		case 5:
+			System.out.println("Friday");
+			break;
+		case 6:
+			System.out.println("Saturday");
+			break;
+		case 7:
+			System.out.println("Sunday");
+			break;
+		default:
+			System.out.println("Please check the given value`");
+			break;
+		}
+				
+	}
+
+}
+-------------------------------------------------------------------------------------------------------------------------------

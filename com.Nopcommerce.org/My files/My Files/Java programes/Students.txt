@@ -1,0 +1,43 @@
+package javapractice;
+
+public class Students {
+
+	public void method1() {
+
+		System.out.print("Roll No : 101  ");
+		System.out.println("Shareef");
+
+	}
+
+	public void method2() {
+
+		System.out.print("Roll No : 102 ");
+		System.out.println("Jyothi");
+
+	}
+
+	public void method3() {
+
+		System.out.print("Roll No : 103 ");
+		System.out.println("Ramya");
+
+	}
+
+	public void method4() {
+
+		System.out.print("Roll No : 104 ");
+		System.out.println("Raghu");
+
+	}
+
+	public static void main(String[] args) {
+
+		Students st = new Students();
+		st.method1();
+		st.method2();
+		st.method3();
+		st.method4();
+
+	}
+
+}
